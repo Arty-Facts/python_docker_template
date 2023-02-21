@@ -1,0 +1,35 @@
+FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
+
+SHELL ["/bin/bash", "-c"]
+
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        software-properties-common \
+    && add-apt-repository -y ppa:deadsnakes \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        python3.10 python3.10-venv\
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* 
+
+# install dependencies 
+RUN apt-get update \ 
+    && apt-get install -y --no-install-recommends\
+    vim\
+    emacs\
+    git\
+    libgl1\
+    pciutils
+
+ARG WORK_DIR
+ARG USER_ID
+ARG GROUP_ID
+
+WORKDIR ${WORK_DIR}
+
+RUN groupadd -r -g ${GROUP_ID} TestSubjectZero && useradd -rM -g TestSubjectZero -u ${USER_ID} TestSubjectZero
+
+# Where pytorch will save parameters from pretrained networks
+ENV XDG_CACHE_HOME=${WORK_DIR}/tmp
