@@ -1,10 +1,2 @@
-accelerate
-diffusers
-fastai
-huggingface-hub
-ipykernel
-ipywidgets==7.7.1
-opencv-python
-RISE
-torchsummary
-transformers
+numpy
+matplotlib

@@ -1,11 +1,23 @@
 # Docker project template
 
+## How to use the template
+
+```
+git clone https://github.com/Arty-Facts/docker_template.git
+
+git remote remove origin
+
+git remote add origin <new remote>
+
+git push --set-upstream origin main
+```
+
 ## Setup and enter the docker image environment 
 
 In linux
 
 ```
-source ./docker_enter.sh
+./docker_enter.sh
 ```
 
 In windows (buggy with GPU not recommended)
@@ -39,7 +51,7 @@ source ./env_enter.sh
 
 In the docker file (environment/dockerfile) under install dependencies add apt packages that you need in your project
 
-note that a newline will brake the RUN command and thus "\" should be used when adding dependencies. More information on how docker works can be found on https://docs.docker.com/get-started/
+note that a newline will brake the RUN command and thus "\\" should be used when adding dependencies. More information on how docker works can be found on https://docs.docker.com/get-started/
 
 
 ## Update pip environment
