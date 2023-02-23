@@ -1,5 +1,5 @@
 #! /bin/bash
-docker build -t party_image --build-arg WORK_DIR=$PWD --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) environment || exit
+docker build -t party_image --build-arg WORK_DIR=$PWD --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) --build-arg USER_NAME=$USER environment || exit
 
 # find nvidia gpu
 gpu=$(lspci | tr '[:upper:]' '[:lower:]' | grep -i nvidia)
