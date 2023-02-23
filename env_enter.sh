@@ -1,6 +1,6 @@
 python3 -m venv venv
 # find GPU
-gpu=$(lspci | grep -i '.* vga .* nvidia .*')
+gpu=$(lspci | tr '[:upper:]' '[:lower:]' | grep -i nvidia)
 
 # if nvidia is pressent assume that we can install requirements_gpu deps
 if [[ $gpu == *' nvidia '* ]]; then
