@@ -2,7 +2,7 @@
 docker build -t party_image --build-arg WORK_DIR=$PWD --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) environment || exit
 
 # find nvidia gpu
-gpu=$(lspci | grep -i '.* vga .* nvidia .*')
+gpu=$(lspci | tr '[:upper:]' '[:lower:]' | grep -i nvidia)
 
 printf '==============\n'
 

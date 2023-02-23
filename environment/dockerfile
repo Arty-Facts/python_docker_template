@@ -4,6 +4,7 @@ SHELL ["/bin/bash", "-c"]
 
 ENV LANG=C.UTF-8
 ENV LC_ALL=C.UTF-8
+ENV USER_NAME=TestSubjectZero
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -21,7 +22,9 @@ RUN apt-get update \
     emacs\
     git\
     libgl1\
-    pciutils
+    pciutils\
+    sudo\
+    openssh-client
 
 ARG WORK_DIR
 ARG USER_ID
@@ -29,7 +32,12 @@ ARG GROUP_ID
 
 WORKDIR ${WORK_DIR}
 
-RUN groupadd -r -g ${GROUP_ID} TestSubjectZero && useradd -rM -g TestSubjectZero -u ${USER_ID} TestSubjectZero
+RUN groupadd -r -g ${GROUP_ID} ${USER_NAME} &&\
+    useradd -rM -g ${USER_NAME} -u ${USER_ID} ${USER_NAME} &&\
+    usermod -aG sudo ${USER_NAME} &&\
+    passwd -d ${USER_NAME} &&\
+    echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers &&\
+    echo '%${USER_NAME} ALL=(ALL)  ALL' >> /etc/sudoers
 
 # Where pytorch will save parameters from pretrained networks
 ENV XDG_CACHE_HOME=${WORK_DIR}/tmp
