@@ -18,17 +18,17 @@ gpu=$(lspci | tr '[:upper:]' '[:lower:]' | grep -i nvidia)
 
 # if gpu available add --gpus all
 if [[ $gpu == *' nvidia '* ]]; then
-    
     __banner 'Nvidia GPU is present:  %s\n' "$gpu"
     all_gpus="--gpus all"
     file=dockerfile.gpu
 else
     __banner 'Nvidia GPU is not present cpu only!\n'  
-    file=dockerfile
+    file=dockerfile.cpu
 fi
 
 docker build -t party_image \
         $clean \
+        --network=host\
         --build-arg WORK_DIR=$PWD \
         --build-arg USER_ID=$(id -u) \
         --build-arg GROUP_ID=$(id -g) \
