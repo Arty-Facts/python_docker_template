@@ -17,13 +17,7 @@ git push --set-upstream origin main
 In linux
 
 ```
-./docker_enter.sh
-```
-
-In windows (buggy with GPU not recommended)
-
-```
-docker_enter.bat
+./docker.sh [clean]
 ```
 
 ## Setup and enter the virtual environment 
@@ -31,14 +25,14 @@ docker_enter.bat
 In windows
 
 ```
-env_enter.bat
+env.bat 
 ```
 
 
 In linux
 
 ```
-source ./env_enter.sh
+source ./env.sh [clean]
 ```
 
 In docker
@@ -49,7 +43,7 @@ source ./env_enter.sh
 
 ## Update docker environment
 
-In the docker file (environment/dockerfile) under install dependencies add apt packages that you need in your project
+In the file (environment/base-packeges.sh) add apt packages that you need in your project
 
 note that a newline will brake the RUN command and thus "\\" should be used when adding dependencies. More information on how docker works can be found on https://docs.docker.com/get-started/
 
