@@ -7,7 +7,7 @@ ENV LC_ALL=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
 # install dependencies 
-COPY base-packages.sh ./
+COPY environment/base-packages.sh ./
 RUN chmod +x base-packages.sh ; sync && ./base-packages.sh
 
 ARG WORK_DIR
