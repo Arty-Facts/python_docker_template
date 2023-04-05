@@ -1,6 +1,6 @@
 echo off
 set clean=%1
-if %clean%==clean del .venv
+if /I "%clean%" EQU "clean" rmdir /s .venv 
 echo on
 
 @REM create venv if it dose not exists
