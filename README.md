@@ -2,6 +2,7 @@
 
 ## How to use the template
 
+### For empty project
 ```
 git clone https://github.com/Arty-Facts/docker_template.git
 
@@ -10,6 +11,19 @@ git remote remove origin
 git remote add origin <new remote>
 
 git push --set-upstream origin main
+```
+
+### For active project 
+```
+git clone https://github.com/Arty-Facts/docker_template.git
+mv -r docker_template/* .
+rm docker_template
+```
+
+## Setup host system
+```
+chmod +x environment/base-packages.sh
+sudo ./environment/base-packages.sh
 ```
 
 ## Setup and enter the docker image environment 
