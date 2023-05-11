@@ -37,7 +37,7 @@ docker build -t party_image \
         || exit
 
 docker run -ti --rm \
-        -v ~:/home/$USER \
+        -v ~:/$HOME \
         $all_gpus \
         -v /mnt:/mnt \
         -v /etc/localtime:/etc/localtime:ro \
