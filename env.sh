@@ -30,9 +30,6 @@ fi
 __banner Instaling base packages... 
 ./venv/bin/pip install -r environment/requirements_base.txt
 
-# enable sliders in notebooks
-./venv/bin/python3 -m jupyter nbextension enable --py --sys-prefix widgetsnbextension
-
 chmod +x venv/bin/activate
 
 # start env

@@ -10,8 +10,5 @@ if not exist "venv" python -m venv venv
 venv\Scripts\pip install -r environment/requirements_gpu.txt
 venv\Scripts\pip install -r environment/requirements_base.txt
 
-@REM enable sliders in notebooks
-venv\Scripts\python -m jupyter nbextension enable --py --sys-prefix widgetsnbextension
-
 @REM start env
 venv\Scripts\Activate
