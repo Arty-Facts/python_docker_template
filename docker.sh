@@ -30,9 +30,7 @@ docker build -t party_image \
         $clean \
         --network=host\
         --build-arg WORK_DIR=$PWD \
-        --build-arg USER_ID=$(id -u) \
-        --build-arg GROUP_ID=$(id -g) \
-        --build-arg USER_NAME=$USER \
+        --build-arg HOME_DIR=$HOME \
         -f environment/$file environment \
         || exit
 
@@ -44,3 +42,4 @@ docker run -ti --rm \
         -u $(id -u):$(id -g) \
         --net=host \
         party_image bash 
+
