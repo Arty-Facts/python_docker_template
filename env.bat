@@ -7,8 +7,7 @@ echo on
 if not exist "venv" python -m venv venv
 
 @REM assume that windows systems has a nvidia GPU
-venv\Scripts\pip install -r environment/requirements_gpu.txt
-venv\Scripts\pip install -r environment/requirements_base.txt
+venv\Scripts\pip install -e .
 
 @REM start env
 venv\Scripts\Activate

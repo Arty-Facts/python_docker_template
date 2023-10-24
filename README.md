@@ -20,13 +20,14 @@ mv -r docker_template/* .
 rm docker_template
 ```
 
-## Setup host system
+
+## Setup host system (Not needed if using docker)
 ```
 chmod +x environment/base-packages.sh
 sudo ./environment/base-packages.sh
 ```
 
-## Setup and enter the docker image environment 
+## Enter the docker image environment 
 
 In linux
 
@@ -34,7 +35,7 @@ In linux
 ./docker.sh [clean]
 ```
 
-## Setup and enter the virtual environment 
+## Enter the virtual environment 
 
 In windows
 
@@ -52,8 +53,32 @@ source ./env.sh [clean]
 In docker
 
 ```
-source ./env.sh [clean]
+source env.sh [clean]
 ```
+
+## Run Jupyter server
+
+```
+jupyter.sh
+```
+
+in docker
+
+```
+./deploy_docker.sh jupyter.sh 
+```
+you can now access the jupyter server on: 
+http://localhost:8888/?token=docker
+
+works with colab
+
+## Deploy a script inside a docker image
+
+```
+./deploy_docker.sh [script]
+```
+docker deploy will run the script inside the docker image and then exit the image, this till be done inside python virtual environment
+
 
 ## Update docker environment
 
@@ -64,12 +89,10 @@ note that a newline will brake the RUN command and thus "\\" should be used when
 
 ## Update pip environment
 
-Due to some packages accelerator dependencies like Nvidia GPU'S and pytorch
-its nice to split packages into three files
+Python dependencies for the project should be added to the environment/requirements.txt file
 
-*environment\requirements_base.txt* - accelerator independent packages
+## Run tests using 
 
-*environment\requirements_gpu.txt* - accelerator dependent GPU packages
-
-*environment\requirements_base.txt* - accelerator dependent CPU alternatives packages
-
+```
+tox
+```

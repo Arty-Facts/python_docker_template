@@ -1,10 +1,10 @@
 #! /bin/bash
-__banner()
-{
-    echo "============================================================"
-    echo $*
-    echo "============================================================"
-}
+source environment/utils.sh
+
+if ! (return 0 2>/dev/null); then
+  __banner "Run this script with: source ./env.sh"
+  exit 1
+fi
 
 if [[ $1 == "clean" ]]; then 
     __banner Remove old env...
@@ -14,23 +14,15 @@ if [[ $1 == "clean" ]]; then
 fi
 
 python3 -m venv venv
-# find GPU
-gpu=$(lspci | tr '[:upper:]' '[:lower:]' | grep -i nvidia)
 
-# if nvidia is pressent assume that we can install requirements_gpu deps
-if [[ $gpu == *' nvidia '* ]]; then
-    __banner 'Nvidia GPU is present:  %s\n instaling deps' "$gpu"
-    ./venv/bin/pip install -r environment/requirements_gpu.txt
-else
-    __banner 'Nvidia GPU is not present instaling cpu deps only!'
-    # No gpu!? install requirements_cpu deps
-    ./venv/bin/pip install -r environment/requirements_cpu.txt
-fi
 
-__banner Instaling base packages... 
-./venv/bin/pip install -r environment/requirements_base.txt
+__banner Instaling env packages... 
+./venv/bin/pip install -e .
+
 
 chmod +x venv/bin/activate
 
 # start env
 source ./venv/bin/activate
+
+__banner "You are now ready to party!"
