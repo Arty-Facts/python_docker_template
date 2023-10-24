@@ -1,3 +1,5 @@
+[![GitHub Actions Status](https://github.com/Arty-Facts/python_docker_template/actions/workflows/python-package-test.yml/badge.svg)](https://github.com/Arty-Facts/idee_playgound/actions/workflows/python-package-test.yml/badge.svg)
+
 # Docker project template
 
 ## How to use the template

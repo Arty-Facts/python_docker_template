@@ -1,6 +1,6 @@
 import unittest
 
-from src.helloworld import hello
+from project.helloworld import hello
 
 class TestHelloWorld(unittest.TestCase):
     def test_hello_world(self):
