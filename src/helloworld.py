@@ -1,6 +1,6 @@
 import sys
 
-def hello(name):
+def hello(name="World"):
     msg = f"Hello, {name}!"
     print("*"*(len(msg)+4))
     print("*", msg, "*")
