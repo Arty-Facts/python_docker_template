@@ -6,7 +6,7 @@
 
 ### For empty project
 ```
-git clone https://github.com/Arty-Facts/docker_template.git
+git clone https://github.com/Arty-Facts/python_docker_template.git
 
 git remote remove origin
 
@@ -17,9 +17,9 @@ git push --set-upstream origin main
 
 ### For active project 
 ```
-git clone https://github.com/Arty-Facts/docker_template.git
-mv -r docker_template/* .
-rm docker_template
+git clone https://github.com/Arty-Facts/python_docker_template.git
+mv -r python_docker_template/* .
+rm python_docker_template
 ```
 
 
