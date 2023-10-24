@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 
 [project]
-name = "project-template"
+name = "project_template"
 version = "0.0.0"
 authors = [
     {name = "Arturas Aleksandraus", email = "arturas@aleksandraus.se"},
@@ -29,7 +29,7 @@ dynamic = ["dependencies"]
 dependencies = {file = ["environment/requirements.txt"]}
 
 [project.scripts]
-hello = "src.helloworld:hello"
+hello = "src.helloworld:main"
 
 [tool.setuptools]
 packages = ["src"]

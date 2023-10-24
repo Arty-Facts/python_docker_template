@@ -1,12 +1,12 @@
-import argparse
+import sys
 
-def hello(name="World"):
+def hello(name):
     msg = f"Hello, {name}!"
-    print(msg)
+    print("*"*(len(msg)+4))
+    print("*", msg, "*")
+    print("*"*(len(msg)+4))
     return msg
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-n", "--name", default="World")
-    args = parser.parse_args()
-    hello(args.name)
+def main():
+    name = sys.argv[1] if len(sys.argv) > 1 else "World"
+    hello(name)
