@@ -18,8 +18,9 @@ git push --set-upstream origin main
 ### For active project 
 ```
 git clone https://github.com/Arty-Facts/python_docker_template.git
-mv -r python_docker_template/* .
-rm python_docker_template
+cd python_docker_template
+mv -r $(ls  --ignore=.git ) .. ; cd ..
+rm rf python_docker_template
 ```
 
 
