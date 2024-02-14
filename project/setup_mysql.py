@@ -13,10 +13,13 @@ mysql_conf_dir = ...
 mysql_data_dir = ...  
 source_conf_content = """
 [mysqld]
-max_connections = 10000
-thread_cache_size = 1000
-innodb_buffer_pool_size = 8G
+max_connections=100000
+thread_cache_size=1000
+innodb_buffer_pool_size=16G
+innodb-buffer-pool-instances=32
 innodb_thread_concurrency = 0
+query_cache_size = 64M
+innodb_log_file_size = 256M
 """
 dest_conf_file_path = pathlib.Path(mysql_conf_dir) / 'my.cnf'
 container_name = f'mysql_{mysql_database}'
