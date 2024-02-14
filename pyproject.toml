@@ -30,6 +30,7 @@ dependencies = {file = ["environment/requirements.txt"]}
 
 [project.scripts]
 hello = "project.helloworld:main"
+setup_mysql = "project.setup_mysql:main"
 
 [tool.setuptools]
 packages = ["project"]

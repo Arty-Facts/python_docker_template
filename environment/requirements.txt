@@ -10,3 +10,5 @@ optuna-dashboard
 torch
 torchvision
 tox
+docker
+cryptography
